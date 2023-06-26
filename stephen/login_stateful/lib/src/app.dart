@@ -7,7 +7,7 @@ class App extends StatelessWidget {
   @override
   Widget build(context){
     return MaterialApp(
-      title: 'Log Me In!',
+      // title: 'Log Me In!',
       home: Scaffold(
         appBar: AppBar(
           title:const Text('Log Me In!'),
