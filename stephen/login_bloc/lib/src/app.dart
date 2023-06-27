@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       home: Scaffold(
         body:  Container(
           margin:const EdgeInsets.all(20.0),
-           child:const LoginScreen(),
+           child:LoginScreen(),
         ),
       ),
     );
