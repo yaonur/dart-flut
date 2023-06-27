@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../mixins/validation_mixin.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,20 +9,22 @@ class LoginScreen extends StatefulWidget {
   }
 }
 
-class LoginScreenState extends State<LoginScreen> {
-  final formKey=GlobalKey<FormState>();
+class LoginScreenState extends State<LoginScreen> with ValidationMixin {
+  final formKey = GlobalKey<FormState>();
+  String email='';
+  String password='';
 
   @override
   Widget build(context) {
     return Container(
       margin: const EdgeInsets.all(20.0),
       child: Form(
-        key:formKey,
+        key: formKey,
         child: Column(
           children: [
             emailField(),
             passwordField(),
-            Container(margin:const EdgeInsets.only(top: 25.0)),
+            Container(margin: const EdgeInsets.only(top: 25.0)),
             submitField(),
           ],
         ),
@@ -36,11 +39,9 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Email Address',
         hintText: '',
       ),
-      validator:(value){
-        if (!value!.contains('@')){
-          return 'Please enter a valid email';
-        }
-        return null;
+      validator:validateEmail,
+      onSaved: (value) {
+        email=value!;
       },
     );
   }
@@ -52,11 +53,9 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Password',
         hintText: '',
       ),
-      validator:(value){
-        if (value!.length<4){
-          return 'Password must be at least 4 characters';
-        }
-        return null;
+      validator: validatePassword,
+      onSaved: (value) {
+        password=value!;
       },
     );
   }
@@ -66,8 +65,10 @@ class LoginScreenState extends State<LoginScreen> {
       style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white, backgroundColor: Colors.blue[500]),
       onPressed: () {
-        formKey.currentState?.validate();
-        // formKey.currentState?.reset();sdf
+        if (formKey.currentState!.validate()) {
+          formKey.currentState?.save();
+          print('Time to post $email and $password to my API');
+        }
       },
       child: const Text('Submit'),
     );

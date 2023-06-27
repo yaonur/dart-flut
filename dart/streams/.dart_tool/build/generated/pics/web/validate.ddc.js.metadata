@@ -1,0 +1,1 @@
+{"version":"1.0.2","name":"web/validate","closureName":"load__web__validate","sourceMapUri":"web/validate.ddc.js.map","moduleUri":"web/validate.ddc.js","fullDillUri":"web/validate.ddc.full.dill","libraries":[{"name":"validate","importUri":"org-dartlang-app:///web/validate.dart","fileUri":"/web/validate.dart","partUris":[]}],"soundNullSafety":true}
