@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:firephone/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -24,7 +25,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   );
   @override
   Widget build(BuildContext context) {
-    phoneController.selection=TextSelection.fromPosition(TextPosition(offset: phoneController.text.length));
+    phoneController.selection = TextSelection.fromPosition(
+        TextPosition(offset: phoneController.text.length));
 
     return Scaffold(
       body: SafeArea(
@@ -66,8 +68,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  onChanged:(value){
-                    setState((){
+                  onChanged: (value) {
+                    setState(() {
                       phoneController.text = value;
                     });
                   },
@@ -90,7 +92,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     prefixIcon: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 13),
                       child: InkWell(
                         onTap: () {
                           showCountryPicker(
@@ -121,20 +124,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
-                    suffixIcon: phoneController.text.length>9?Container(
-                      height:30,
-                      width: 30,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: InkWell(
-                        onTap: () {
-                          phoneController.clear();
-                        },
-                        child: const Icon(
-                          Icons.close,
-                          size: 25,
-                        ),
-                      ),
-                    ):null,
+                    suffixIcon: phoneController.text.length > 9
+                        ? Container(
+                            height: 30,
+                            width: 30,
+                            margin: const EdgeInsets.all(10.0),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.purple,
+                            ),
+                            child: const Icon(
+                              Icons.done,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                          )
+                        : null,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: CustomButton(
+                    text: "Login",
+                    onPressed: () {},
                   ),
                 ),
               ],

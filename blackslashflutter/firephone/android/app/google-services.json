@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "491949219028",
+    "project_id": "aura-1153e",
+    "storage_bucket": "aura-1153e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491949219028:android:183f50798a079a72c26f41",
+        "android_client_info": {
+          "package_name": "com.example.firephone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491949219028-cpq36dms5i91taita3oltju3b6pmtb1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAITa_lWgFLS_lPUWUF4i2MdMlisULf2bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491949219028-cpq36dms5i91taita3oltju3b6pmtb1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
