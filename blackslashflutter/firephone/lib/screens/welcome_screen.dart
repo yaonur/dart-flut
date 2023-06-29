@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/auth_provider.dart';
 import '../widgets/custom_button.dart';
-import './register_screent.dart';
+import 'register_screen.dart';
 import './home_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {

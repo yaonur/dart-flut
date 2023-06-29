@@ -35,9 +35,9 @@ class _FirtsPageState extends State<FirtsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Demo'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Flutter Demo'),
+      // ),
       body: Center(
         child: index == 0
             ? Container(

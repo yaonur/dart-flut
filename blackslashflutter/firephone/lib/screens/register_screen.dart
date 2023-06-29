@@ -2,7 +2,6 @@ import 'package:country_picker/country_picker.dart';
 import 'package:firephone/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/auth_provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -151,7 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 50,
                   child: CustomButton(
                     text: "Login",
-                    onPressed: sendPhoneNumber,
+                    onPressed: ()=>sendPhoneNumber(),
                   ),
                 ),
               ],
@@ -165,7 +164,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     print("sendPhoneNumber");
     String phoneNumber = phoneController.text.trim();
-    print(phoneNumber);
-    ap.signInWithPhone(context, phoneNumber);
+    ap.signInWithPhone(context, "+${country.phoneCode}$phoneNumber");
   }
 }
