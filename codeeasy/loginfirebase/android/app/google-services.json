@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215987782544",
+    "project_id": "ceasy-auth",
+    "storage_bucket": "ceasy-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215987782544:android:03e50282e6ac2271d6a915",
+        "android_client_info": {
+          "package_name": "com.example.loginfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215987782544-sp9uqublmn66n52k66n54eeqd9h72q7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4p1dlZomkjtoytC4dhRf9s7FfY2Vr8CI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215987782544-sp9uqublmn66n52k66n54eeqd9h72q7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

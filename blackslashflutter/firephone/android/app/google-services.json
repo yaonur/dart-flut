@@ -29,6 +29,13 @@
             {
               "client_id": "491949219028-cpq36dms5i91taita3oltju3b6pmtb1i.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "491949219028-1jioq9u163e3iadgpk901uqs367s74hc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firephone.RunnerTests"
+              }
             }
           ]
         }
