@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simplestintheworl/widget/card_widget.dart';
+import 'package:simplestintheworl/class/item_class.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,18 +15,18 @@ class HomePage extends StatelessWidget {
       body:  SingleChildScrollView(
         child: Column(
           children: [
-            CardWidget(title:"Title 1", description:"Description 1"),
+            CardWidget(box: ItemClass(title:"Rocket", description:"Rocket description",imagePath:"images/rocket.png")),
             Row(
               children: [
                 Expanded(
-                  child: CardWidget(title:"Title 2", description:"Description 2"),
+                  child: CardWidget(box:ItemClass(title:"Travel", description:"Description 2",imagePath:"images/travel.png")),
                 ),
                 Expanded(
-                  child: CardWidget(title:"Title 3", description:"Description 3"),
+                  child: CardWidget(box:ItemClass(title:"Space", description:"Description 3",imagePath:"images/space.png")),
                 ),
               ],
             ),
-            CardWidget(title:"Title 4", description:"Description 4"),
+            CardWidget(box:ItemClass(title:"Yeah", description:"Description 4",imagePath:"images/yeah.png")),
           ],
         ),
       ),
