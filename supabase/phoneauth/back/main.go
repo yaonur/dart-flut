@@ -10,8 +10,8 @@ import (
 )
 
 func main() {
-	accountSid := "AC7f7b15c47ab1f34ec85c6054ed614637"
-	authToken := "eec9b4bba947b8d9f87f3c03eab7bae1"
+	accountSid := ""
+	authToken := ""
 	app := fiber.New()
 
 	app.Get("/api/send-verification", func(c *fiber.Ctx) error {
