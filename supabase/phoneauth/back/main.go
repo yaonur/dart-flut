@@ -10,8 +10,8 @@ import (
 )
 
 func main() {
-	accountSid := ""
-	authToken := ""
+	accountSid := "sid"
+	authToken := "token"
 	app := fiber.New()
 
 	app.Get("/api/send-verification", func(c *fiber.Ctx) error {
@@ -31,6 +31,7 @@ func main() {
 		if err != nil {
 			fmt.Println("Error sending SMS message: " + err.Error())
 		} else {
+
 			response, _ := json.Marshal(*resp)
 			fmt.Println("Response: " + string(response))
 		}
