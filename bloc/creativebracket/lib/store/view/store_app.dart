@@ -16,7 +16,7 @@ class StoreApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BlocProvider(
-        create: (context) => StoreBloc(),
+        create: (context) => StoreCubit(),
         child: const _StoreAppView(title: 'My Store'),
       ),
     );
@@ -40,7 +40,7 @@ class __StoreAppViewState extends State<_StoreAppView> {
             return FadeTransition(
                 opacity: animation,
                 child: BlocProvider.value(
-                  value: context.read<StoreBloc>(),
+                  value: context.read<StoreCubit>(),
                   child: child,
                 ));
           },
@@ -56,7 +56,7 @@ class __StoreAppViewState extends State<_StoreAppView> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: BlocBuilder<StoreBloc, StoreState>(
+        child: BlocBuilder<StoreCubit, StoreState>(
           builder: (context, state) {
             if (state.productsStatus == StoreRequest.requestInProgress) {
               return const CircularProgressIndicator();
@@ -71,7 +71,7 @@ class __StoreAppViewState extends State<_StoreAppView> {
                   const Text('Press the button to load products'),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<StoreBloc>().add(StoreProductsRequested());
+                      context.read<StoreCubit>().getProducts();
                     },
                     child: const Text('Load Products'),
                   ),
@@ -108,15 +108,13 @@ class __StoreAppViewState extends State<_StoreAppView> {
                             foregroundColor:
                                 inCart ? Colors.black45 : Colors.green,
                           ),
-                        
-
                           onPressed: () {
                             inCart
-                                ? context.read<StoreBloc>().add(
-                                      StoreProductsRemovedFromCart(product.id),
-                                    )
-                                : context.read<StoreBloc>().add(
-                                      StoreProductsAddedToCart(product.id),
+                                ? context
+                                    .read<StoreCubit>()
+                                    .removeFromCart(product.id)
+                                : context.read<StoreCubit>().addToCart(
+                                      product.id,
                                     );
                           },
                           child: Padding(
@@ -153,7 +151,7 @@ class __StoreAppViewState extends State<_StoreAppView> {
             },
             child: const Icon(Icons.shopping_cart),
           ),
-          BlocBuilder<StoreBloc, StoreState>(
+          BlocBuilder<StoreCubit, StoreState>(
             builder: (context, state) {
               return Positioned(
                 right: 0,

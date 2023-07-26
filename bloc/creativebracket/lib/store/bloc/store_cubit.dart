@@ -27,8 +27,20 @@ class StoreCubit extends Cubit<StoreState>{
   }
 
   void addToCart(int productId) {
+    print('adding productId $productId');
+    emit(
+      state.copyWith(
+        cartIds: {...state.cartIds,productId},
+      ),
+    );
   }
 
   void removeFromCart(int productId) {
+    print('removing productId $productId');
+        emit(
+      state.copyWith(
+        cartIds: {...state.cartIds}..remove(productId),
+      ),
+    );
   }
 }
