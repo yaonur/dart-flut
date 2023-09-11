@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:s2/cubits/counter/counter_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,13 +11,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My Counter Cubit',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider<CounterCubit>(
+      create: (context) => CounterCubit(),
+      child: MaterialApp(
+        title: 'My Counter Cubit',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(),
     );
   }
 }
@@ -26,25 +31,58 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          '0',
-          style: TextStyle(fontSize: 52.0),
-        ),
+      body: BlocConsumer<CounterCubit, CounterState>(
+        listener: (context, state) {
+          if (state.counter == 3) {
+            showDialog(
+              context: context,
+              builder: (context) => const AlertDialog(
+                title: Text('Whoa there!'),
+                content: Text('You have reached the maximum value.'),
+              ),
+            );
+          } else if (state.counter == -1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => Scaffold(
+                  appBar: AppBar(
+                    title: const Text('Second Screen'),
+                  ),
+                  body: const Center(
+                    child: Text('You have gone below the minimum value.'),
+                  ),
+                ),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return Center(
+            child: Text(
+              '${state.counter}',
+              style: const TextStyle(fontSize: 52.0),
+            ),
+          );
+        },
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.add),
+            onPressed: () {
+              context.read<CounterCubit>().increment();
+            },
             heroTag: 'increment',
+            child: const Icon(Icons.add),
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.remove),
+            onPressed: () {
+              context.read<CounterCubit>().decrement();
+            },
             heroTag: 'decrement',
+            child: const Icon(Icons.remove),
           ),
         ],
       ),
