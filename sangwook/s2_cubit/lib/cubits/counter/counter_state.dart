@@ -16,3 +16,16 @@ class CounterState {
     return CounterState(counter: counter ?? this.counter);
   }
 }
+// class CounterState  {
+//   final int counter;
+//
+//   CounterState(this.counter);
+//
+//   @override
+//   List<Object> get props => [counter];
+//
+//   @override
+//   String toString() {
+//     return 'CounterState{}';
+//   }
+// }
